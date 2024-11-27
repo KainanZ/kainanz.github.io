@@ -326,7 +326,7 @@
     document.querySelectorAll(".social").forEach(e => {
         const {name} = e.dataset;
 	if (name in action) {
-		e.setAttribute("onclick", e => {
+		e.addEventListener("click", e => {
 		    e.preventDefault();
 		    action[name]();
 		});
