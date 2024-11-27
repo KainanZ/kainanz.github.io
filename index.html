@@ -269,14 +269,6 @@
             </a>
             </li>
 
-            <li>
-            <a class="social" data-name="linkedin" target="_blank" href="">
-            <span class="fa-stack fa-lg">
-            <i class="fas fa-circle fa-stack-2x"></i>
-            <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-            </span>
-            </a>
-            </li>
         </ul>
     </div>
 </section>
@@ -315,16 +307,7 @@
                             </span>
                         </a>
                     </li>
-	
-                    <li>
-                        <a class="social" data-name="linkedin" target="_blank" href="">
-                            <span class="fa-stack fa-lg">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-		 
+			 
              </ul>
                 <p class="copyright text-muted">Kainan Zhao</p>
             </div>
@@ -336,11 +319,21 @@
         email: "mailto:kainanzhao001@163.com",
         wechat: "https://web.wechat.com/",
         github: "https://github.com/KainanZ",
-        linkedin: "https://www.linkedin.com/",
+    };
+    const action = {
+        wechat: () => alert(`Wechat ID: kainan0898`),
     };
     document.querySelectorAll(".social").forEach(e => {
         const {name} = e.dataset;
-        e.setAttribute("href", social[name]);
+	if (name in action) {
+		e.setAttribute("onclick", e => {
+		    e.preventDefault();
+		    action[name]();
+		});
+                e.setAttribute("href", "");
+	} else {
+	    e.setAttribute("href", social[name]);
+	}
     });
 </script>
 </body>
